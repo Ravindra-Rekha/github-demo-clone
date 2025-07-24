@@ -1,0 +1,112 @@
+{#
+  Template for SAP content pages.
+  Converted from page--sap--content.tpl.php (Drupal 7) to Drupal 10 Twig.
+#}
+
+<div class="complete-header">
+  <div class="top-header-search">
+    <div class="top-header text-resizeable-container">
+      {{ page.top_header }}
+    </div>
+  </div>
+</div>
+
+<div class="blue-bg header-main-menu">
+  <div class="container">
+    <header id="navbar" role="banner" class="{{ navbar_classes }}">
+      <div class="{{ container_class }}">
+        <div class="col-md-4 col-xs-12 col-sm-12">
+          <div class="navbar-header">
+            {% if logo %}
+              <a class="logo navbar-btn pull-left" href="{{ front_page }}" title="{{ 'Home'|t }}">
+                <img src="{{ logo }}" alt="{{ 'Home'|t }}">
+              </a>
+            {% endif %}
+
+            {% if site_name %}
+              <a class="name navbar-brand" href="{{ front_page }}" title="{{ 'Home'|t }}">{{ site_name }}</a>
+            {% endif %}
+
+            {{ logo_text1|raw }}
+
+            {% if primary_nav or secondary_nav or page.navigation %}
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">{{ 'Toggle navigation'|t }}</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if primary_nav or secondary_nav or page.navigation %}
+          <div class="col-md-8 col-xs-12 col-sm-12 padding-none-marathi">
+            <div class="navbar-collapse collapse">
+              <nav role="navigation" class="main-menu-size">
+                {{ primary_nav }}
+                {{ secondary_nav }}
+                {{ page.navigation }}
+              </nav>
+              {% if logo_link %}
+                <a href="{{ logo_link }}" target="_blank">
+                  <img src="{{ maharashtra_logo_image }}" alt="{{ 'Nation Amblem'|t }}" class="navigation_amblam_logo">
+                </a>
+              {% else %}
+                <img src="{{ maharashtra_logo_image }}" alt="{{ 'Nation Amblem'|t }}" class="navigation_amblam_logo">
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </header>
+  </div>
+</div>
+
+<div class="text-resizeable-container">
+  <div class="background-image-container">
+    <div class="main-container padd-0 {{ container_class }}">
+      <header role="banner" id="page-header">
+        {% if site_slogan %}
+          <p class="lead">{{ site_slogan }}</p>
+        {% endif %}
+        {{ page.header }}
+      </header>
+
+      <div class="">
+        {% if page.sidebar_first %}
+          <aside class="col-sm-3 col-md-3 col-xs-12" role="complementary">
+            {{ page.sidebar_first }}
+          </aside>
+        {% endif %}
+
+        <section class="{{ content_column_class }}">
+          {% if page.highlighted %}
+            <div class="highlighted jumbotron">{{ page.highlighted }}</div>
+          {% endif %}
+          {{ breadcrumb }}
+          <a id="main-content"></a>
+          {{ messages }}
+          {{ tabs }}
+          {{ page.help }}
+          {% if action_links %}
+            <ul class="action-links">{{ action_links }}</ul>
+          {% endif %}
+          {{ page.content }}
+        </section>
+
+        {% if page.sidebar_second %}
+          <aside class="col-sm-3 col-md-3 col-xs-12" role="complementary">
+            {{ page.sidebar_second }}
+          </aside>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if page.footer %}
+  <footer class="footer {{ container_class }}">
+    {{ page.footer }}
+  </footer>
+{% endif %}

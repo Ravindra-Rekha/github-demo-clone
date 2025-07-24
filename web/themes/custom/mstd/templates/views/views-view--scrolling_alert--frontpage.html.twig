@@ -1,0 +1,84 @@
+{#
+/**
+ * @file
+ * Default view template for displaying a view.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the container.
+ * - title: The view title.
+ * - title_prefix: Additional output populated by modules before the title.
+ * - title_suffix: Additional output populated by modules after the title.
+ * - header: The view header.
+ * - footer: The view footer.
+ * - rows: The results of the view query.
+ * - empty: The empty text to display if the view is empty.
+ * - pager: The pager links.
+ * - exposed: Exposed widget form/info.
+ * - feed_icons: Feed icon.
+ * - more: Link to view more.
+ * - attachment_before: Attachment before.
+ * - attachment_after: Attachment after.
+ */
+#}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if title %}
+    <h2>{{ title }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  {% if header %}
+    <div class="view-header">
+      {{ header }}
+    </div>
+  {% endif %}
+
+  {% if exposed %}
+    <div class="view-filters">
+      {{ exposed }}
+    </div>
+  {% endif %}
+
+  {% if attachment_before %}
+    <div class="attachment attachment-before">
+      {{ attachment_before }}
+    </div>
+  {% endif %}
+
+  {% if rows %}
+    <div id="banner-alert-ticker">
+      {{ rows }}
+    </div>
+  {% elseif empty %}
+    <div class="view-empty">
+      {{ empty }}
+    </div>
+  {% endif %}
+
+  {% if pager %}
+    {{ pager }}
+  {% endif %}
+
+  {% if attachment_after %}
+    <div class="attachment attachment-after">
+      {{ attachment_after }}
+    </div>
+  {% endif %}
+
+  {% if more %}
+    {{ more }}
+  {% endif %}
+
+  {% if footer %}
+    <div class="view-footer">
+      {{ footer }}
+    </div>
+  {% endif %}
+
+  {% if feed_icons %}
+    <div class="feed-icon">
+      {{ feed_icons }}
+    </div>
+  {% endif %}
+</div>

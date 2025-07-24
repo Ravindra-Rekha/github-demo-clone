@@ -1,0 +1,156 @@
+{#
+  Template for taxonomy term pages.
+  Converted from Drupal 7 `page--taxonomy--term.tpl.php`.
+#}
+
+<div class="complete-header">
+  <div class="top-header-search">
+    <div class="top-header text-resizeable-container">
+      <div class="row white-bg">
+        {{ page.top_header }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if is_front %}
+  <div class="blue-bg">
+    <div class="static-header container">
+      <div class="col-md-5 col-xs-12 col-sm-12">
+        {% if logo %}
+          <a class="logo navbar-btn pull-left" href="{{ front_page }}" title="{{ 'Home'|t }}">
+            <img src="{{ logo }}" alt="{{ 'Home'|t }}">
+          </a>
+        {% endif %}
+        {% if site_name %}
+          <a class="name navbar-brand" href="{{ front_page }}" title="{{ 'Home'|t }}">{{ site_name }}</a>
+        {% endif %}
+        {{ logo_text1|raw }}
+      </div>
+      <div class="col-md-7 col-xs-12 col-sm-12 head-bg">
+        {% if india_emblem %}
+          <a href="{{ india_emblem }}" target="_blank" class="india_emblem"></a>
+        {% endif %}
+        <div class="slogan_mstd">
+          {{ logo_text2|raw }}
+        </div>
+        <img src="{{ maharashtra_logo_image }}" alt="{{ 'Nation Amblem'|t }}" class="static_amblam_logo">
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+<div class="blue-bg header-main-menu">
+  <div class="container">
+    <header id="navbar" role="banner" class="{{ navbar_classes }}">
+      <div class="{{ container_class }}">
+        <div class="col-md-4 col-xs-12 col-sm-12">
+          <div class="navbar-header">
+            {% if logo %}
+              <a class="logo navbar-btn pull-left" href="{{ front_page }}" title="{{ 'Home'|t }}">
+                <img src="{{ logo }}" alt="{{ 'Home'|t }}">
+              </a>
+            {% endif %}
+            {% if site_name %}
+              <a class="name navbar-brand" href="{{ front_page }}" title="{{ 'Home'|t }}">{{ site_name }}</a>
+            {% endif %}
+            {{ logo_text1|raw }}
+
+            {% if primary_nav or secondary_nav or page.navigation %}
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">{{ 'Toggle navigation'|t }}</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if primary_nav or secondary_nav or page.navigation %}
+          <div class="col-md-8 col-xs-12 col-sm-12 padding-none-marathi">
+            <div class="navbar-collapse collapse">
+              <nav role="navigation" class="main-menu-size">
+                {{ primary_nav }}
+                {{ secondary_nav }}
+                {{ page.navigation }}
+              </nav>
+              {% if logo_link %}
+                <a href="{{ logo_link }}" target="_blank">
+                  <img src="{{ maharashtra_logo_image }}" alt="{{ 'Nation Amblem'|t }}" class="navigation_amblam_logo">
+                </a>
+              {% else %}
+                <img src="{{ maharashtra_logo_image }}" alt="{{ 'Nation Amblem'|t }}" class="navigation_amblam_logo">
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </header>
+  </div>
+</div>
+
+<div class="text-resizeable-container">
+  <div id="top-slider-section-id" class="slider-section">
+    <div class="clearfix"></div>
+    <div class="frontpage-slider">
+      {{ page.frontpage_slider }}
+    </div>
+  </div>
+
+  <div class="background-image-container">
+    <div class="main-container {{ container_class }}">
+      <header role="banner" id="page-header">
+        {% if site_slogan %}
+          <p class="lead">{{ site_slogan }}</p>
+        {% endif %}
+        {{ page.header }}
+      </header>
+
+      <div class="container">
+        {% if page.sidebar_first %}
+          <aside class="col-sm-4 col-md-4 col-xs-12" role="complementary">
+            {{ page.sidebar_first }}
+          </aside>
+        {% endif %}
+
+        <section class="{{ content_column_class }}">
+          {% if page.highlighted %}
+            <div class="highlighted jumbotron">{{ page.highlighted }}</div>
+          {% endif %}
+
+          {{ breadcrumb }}
+          <a id="main-content"></a>
+
+          {{ title_prefix }}
+          {% if title %}
+            <h1 class="page-header">{{ title }}</h1>
+          {% endif %}
+          {{ title_suffix }}
+
+          {{ messages }}
+          {{ tabs }}
+          {{ page.help }}
+
+          {% if action_links %}
+            <ul class="action-links">{{ action_links }}</ul>
+          {% endif %}
+
+          {{ page.content }}
+        </section>
+
+        {% if page.sidebar_second %}
+          <aside class="col-sm-3 col-md-3 col-xs-12" role="complementary">
+            {{ page.sidebar_second }}
+          </aside>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if page.footer %}
+  <footer class="footer {{ container_class }}">
+    {{ page.footer }}
+  </footer>
+{% endif %}

@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Theme override for a single search result.
+ *
+ * Available variables:
+ * - url: URL of the result.
+ * - title: Title of the result.
+ * - snippet: A small preview of the result.
+ * - info: A string of all the meta information (optional).
+ * - info_split: Keyed array version of info (optional).
+ * - title_prefix: Additional output populated before the title.
+ * - title_suffix: Additional output populated after the title.
+ * - attributes: HTML attributes for the <li> tag.
+ * - title_attributes: HTML attributes for the <h3> tag.
+ * - content_attributes: HTML attributes for the content.
+ * - classes: A string of CSS classes.
+ *
+ * @ingroup themeable
+ */
+#}
+<li{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  <h3{{ title_attributes.addClass('title') }}>
+    <a href="{{ url }}">{{ title }}</a>
+  </h3>
+  {{ title_suffix }}
+  {% if snippet %}
+    <div class="search-snippet-info">
+      <p class="search-snippet"{{ content_attributes }}>
+        {{ snippet|raw }}
+      </p>
+    </div>
+  {% endif %}
+</li>

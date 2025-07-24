@@ -1,0 +1,21 @@
+name: 'MSTD'
+type: theme
+description: 'Bootstrap-based custom theme for Drupal 10.'
+core_version_requirement: ^10
+base theme: bootstrap5
+libraries:
+  - mstd/global-styling
+
+regions:
+  navigation: 'Navigation'
+  header: 'Top Bar'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  footer: 'Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  top_header: 'Top Search Bar'
+  frontpage_slider: 'Frontpage Slider'

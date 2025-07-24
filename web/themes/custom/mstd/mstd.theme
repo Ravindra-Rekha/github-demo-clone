@@ -1,0 +1,33 @@
+<?php
+
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function mstd_views_pre_render(\Drupal\views\ViewExecutable $view) {
+  $title = $view->getTitle();
+  if (!empty($title)) {
+    $view->setTitle(\Drupal::translation()->translate($title));
+  }
+}
+
+/**
+ * Implements hook_preprocess_comment().
+ */
+function mstd_preprocess_comment(array &$variables) {
+  $comment = $variables['comment'];
+
+  // Make sure the field exists and has data.
+  if ($comment->hasField('field_stake_holder_category') && !$comment->get('field_stake_holder_category')->isEmpty()) {
+    $term = $comment->get('field_stake_holder_category')->first()->entity;
+
+    if ($term instanceof Term) {
+      $term_name = $term->label();
+
+      // Inject the term name into the "submitted" string.
+      $replace = ' (' . $term_name . ') (';
+      $variables['submitted'] = str_replace('(', $replace, $variables['submitted']);
+    }
+  }
+}

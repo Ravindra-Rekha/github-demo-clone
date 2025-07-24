@@ -1,0 +1,16 @@
+global-styling:
+  version: 1.x
+  css:
+    theme:
+      css/cmsstyle.css: {}
+      css/cmsmobile.css: {}
+
+  js:
+    js/tickerme.js: {}
+    js/tickerme.min.js: {}
+    js/mstdscript.js: {}
+
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
