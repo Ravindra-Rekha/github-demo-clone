@@ -1,0 +1,8 @@
+name: custom view module
+description: "show the content through view"
+type: module
+core_version_requirement: ^10 || ^11
+package: custom
+dependencies:
+  -drupal:views
+  -drupal:node
